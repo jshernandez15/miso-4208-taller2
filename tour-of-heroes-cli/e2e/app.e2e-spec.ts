@@ -47,3 +47,23 @@ describe('Tour of heroes, heroes page', () => {
     expect(page.getAllHeroes().count()).toBe(currentHeroes.then(n => n - 1));
   });
 });
+
+describe('Tour of heroes, heroes details page', () => {
+  let page: TourOfHeroesPage;
+
+  beforeEach(() => {
+    page = new TourOfHeroesPage;
+    page.navigateToHeroes();
+  });
+
+  it('should modify a hero name', () => {
+    const herosToModify = [17, 15];
+    herosToModify.map((id) => {
+      const newName = 'newName' + id;
+      page.navigateToHeroDetails(id);
+      page.modifyHeroNameInDetails(newName);
+      expect(page.heroNameForId(id)).toBe(newName);
+    });
+  });
+
+});
