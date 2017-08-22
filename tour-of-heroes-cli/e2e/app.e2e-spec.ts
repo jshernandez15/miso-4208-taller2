@@ -16,6 +16,15 @@ describe('Tour of heroes Dashboard', () => {
     page.navigateToHeroes();
     expect(page.getAllHeroes().count()).toBe(11);
   });
+
+  it('should find a hero', () => {
+    const heroNames = ['Magma','Narco'];
+    heroNames.map((heroName) => {
+      page.navigateTo();
+      page.lookUpHeroInSearch(heroName);
+      expect(page.getHeroNameInDetails()).toEqual(heroName);
+    });
+  });
 });
 
 describe('Tour of heroes, heroes page', () => {
