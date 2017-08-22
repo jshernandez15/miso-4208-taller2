@@ -41,4 +41,9 @@ describe('Tour of heroes, heroes page', () => {
     expect(page.getAllHeroes().count()).toBe(currentHeroes.then(n => n + 1));
   });
 
+  it('should remove a hero', () => {
+    const currentHeroes = page.getAllHeroes().count();
+    page.removeHero('Bombasto');
+    expect(page.getAllHeroes().count()).toBe(currentHeroes.then(n => n - 1));
+  });
 });

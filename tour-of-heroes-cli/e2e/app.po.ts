@@ -30,4 +30,8 @@ export class TourOfHeroesPage {
   getHeroNameInDetails(){
     return element(by.tagName('input')).getAttribute('value');
   }
+
+  removeHero(heroName){
+    element(by.cssContainingText('span', heroName)).element(by.xpath('following-sibling::button')).click();
+  }
 }
