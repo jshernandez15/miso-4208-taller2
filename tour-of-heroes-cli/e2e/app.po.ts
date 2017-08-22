@@ -54,4 +54,9 @@ export class TourOfHeroesPage {
   heroNameForId(id){
     return element(by.cssContainingText('.badge', id)).element(by.xpath('following-sibling::span')).getText();
   }
+
+  navigateFromHeroOnTop(heroName) {
+    element(by.cssContainingText('h4', heroName)).click();    
+    browser.sleep(2000);
+  }
 }

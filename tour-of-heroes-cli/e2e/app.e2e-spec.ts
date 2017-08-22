@@ -67,3 +67,35 @@ describe('Tour of heroes, heroes details page', () => {
   });
 
 });
+
+describe('Tour of heroes, navigation to hero details page', () => {
+  let page: TourOfHeroesPage;
+
+  beforeEach(() => {
+    page = new TourOfHeroesPage;
+  });
+
+  it('should navigate from dashboard', () => {
+    page.navigateTo();
+    const heroName = "Bombasto";
+    page.navigateFromHeroOnTop(heroName);
+    expect(page.getHeroNameInDetails()).toEqual(heroName);
+  });
+
+  it('should navigate from search form', () => {
+    const heroName = 'Magma';
+    page.navigateTo();
+    page.lookUpHeroInSearch(heroName);
+    expect(page.getHeroNameInDetails()).toEqual(heroName);
+  });
+
+  it('should navigate from hero list', () => {
+    const hero = {
+      id: 19,
+      name: 'Magma'
+    };
+    page.navigateToHeroes();
+    page.navigateToHeroDetails(hero.id);
+    expect(page.getHeroNameInDetails()).toEqual(hero.name);
+  });
+});
